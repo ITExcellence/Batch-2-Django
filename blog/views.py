@@ -1,26 +1,13 @@
 from django.shortcuts import render
+from .models import Post
 
 def home(request):
-    posts = [
-        {
-        "title": "My First Post",
-        "author": "Alice",
-        },
-        {
-        "title": "Learning Django",
-        "author": "Bob",
-        },
-        {
-        "title": "Why Python Is Fun",
-        "author": "Charlie",
-        },
-    ]
+    posts = Post.objects.all().order_by("-created_at")
     
     context = {
         "posts": posts,
     }
 
-    
     return render(request, "blog/home.html", context)
 
 # contact

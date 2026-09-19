@@ -1,0 +1,17 @@
+body {
+ font-family: Arial, sans-serif;
+ max-width: 800px;
+ margin: 40px auto;
+ padding: 0 20px;
+ background: coral;
+}
+nav {
+ margin-bottom: 30px;
+}
+nav a {
+ margin-right: 15px;
+}
+article {
+ border-bottom: 1px solid #ddd;
+ padding: 15px 0;
+}

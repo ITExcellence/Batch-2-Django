@@ -1,0 +1,30 @@
+{% block title %}
+    {{ post.title }} | BeginnerBlog
+{% endblock %}
+
+
+{% block content %}
+
+    <article>
+
+        <h1>{{ post.title }}</h1>
+
+        <p>{{ post.content }}</p>
+
+        <p>
+            Created: {{ post.created_at }}
+        </p>
+
+        {% if post.published %}
+
+            <p>Published</p>
+
+        {% else %}
+
+            <p>Draft</p>
+
+        {% endif %}
+
+    </article>
+
+{% endblock %}

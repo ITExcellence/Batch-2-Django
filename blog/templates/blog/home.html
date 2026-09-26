@@ -1,23 +1,31 @@
-{% extends "blog/base.html" %} 
+{% extends "blog/base.html" %}
+
+{% block title %} 
+    Home | BeginnerBlog 
+{% endblock%} 
 
 {% block content %}
 
- <h1>Welcome to BeginnerBlog</h1>
- <p>Learning Django one step at a time.</p>
+<h1>BeginnerBlog</h1>
+<h2>Latest Posts</h2>
 
- {% for post in posts %}
+{% if posts %} {% for post in posts %}
+<article>
+  <h3>
+    <a href="{% url 'post_detail' post.pk %}"> {{ post.title }} </a>
+  </h3>
 
-    <article>
+  <p>{{ post.content }}</p>
+  <p>Created: {{ post.created_at }}</p>
 
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-        <p>
-            Created: {{ post.created_at }}
-        </p>
+  {% if post.published %}
+  <p>Published</p>
+  {% else %}
+  <p>Draft</p>
+  {% endif %}
+</article>
+{% endfor %} {% else %}
 
-    </article>
+<p>No posts are available yet.</p>
 
-{% endfor %}
-
- 
-{% endblock %}
+{% endif %} {% endblock %}
